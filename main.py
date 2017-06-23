@@ -52,7 +52,7 @@ def view(points, lines):
 	renderWindow.Render()
 	renderWindowInteractor.Start()
 
-# end of view
+# end_of_view
 
 def interpolate(pi, pj, axis, cell_pts, scalar, val):
 
@@ -62,7 +62,7 @@ def interpolate(pi, pj, axis, cell_pts, scalar, val):
 
 	return (a + b) / c
 
-# end of interpolation
+# end_of_interpolate
 
 def contour(input_file):
 
@@ -119,7 +119,7 @@ def contour(input_file):
 				else:
 					p = j
 
-				cell_index += 2**p
+				cell_index += 2**p # valor obtido já convertido para decimal
 
 		# se cell_index == 0 ou cell_index == 15:
 		# não faz nada já que a celula está totalmente acima
@@ -261,7 +261,7 @@ def contour(input_file):
 	# chama a rotina para visualização do contorno
 	view(isoline_points, lines)
 
-# end of contour
+# end_of_contour
 
 if __name__ == "__main__":
 
@@ -277,4 +277,4 @@ if __name__ == "__main__":
 	# chama a função que implementa o Marching Squares
 	contour(input_file)
 
-# end of main
+# end_of_main
