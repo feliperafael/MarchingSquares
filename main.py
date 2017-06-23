@@ -82,7 +82,8 @@ def contour(input_file):
 
 	# obtem o escalar, para o contorno, do usuário
 	try:
-		val = float(raw_input('\nInforme o escalar: '))
+		print '\nInforme o escalar (deve estar no intervalo [%.2f,%.2f]): ' % (scalar_range[0],scalar_range[1])
+		val = float(raw_input())
 	except ValueError:
 		print "Nao e um numero... =(\n"
 		sys.exit(-1)
