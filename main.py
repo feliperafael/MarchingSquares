@@ -15,8 +15,32 @@
 
 import sys,os
 import vtk
-from vtk.util import numpy_support as VN
 
+
+def writeVTK(points, lines):
+
+	# Create a polydata to store everything in
+	linesPolyData = vtk.vtkPolyData()
+
+	# Add the points to the dataset
+	linesPolyData.SetPoints(points)
+	 
+	# Add the lines to the dataset
+	linesPolyData.SetLines(lines)
+
+	# object to write the file
+	writer = vtk.vtkPolyDataWriter()
+	writer.SetFileName("output.vtk")
+	if vtk.VTK_MAJOR_VERSION <= 5:
+	    writer.SetInput(linesPolyData)
+	else:
+	    writer.SetInputData(linesPolyData)
+
+	# write the file
+	writer.SetFileTypeToASCII()
+	writer.Write()
+
+# end_of_writeVTK	
 
 def view(points, lines):
 
@@ -258,6 +282,9 @@ def contour(input_file):
 		elif cell_index != 0 and cell_index != 15:
 			print "\n Algo errado nao esta certo... =(\n"
 			sys.exit(-1)
+
+	# chama a rotina para a escrita do arquivo de saida
+	writeVTK(isoline_points, lines)
 
 	# chama a rotina para visualização do contorno
 	view(isoline_points, lines)
