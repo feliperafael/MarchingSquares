@@ -30,7 +30,7 @@ def writeVTK(points, lines):
 
 	# object to write the file
 	writer = vtk.vtkPolyDataWriter()
-	writer.SetFileName("output.vtk")
+	writer.SetFileName("output/output.vtk")
 	if vtk.VTK_MAJOR_VERSION <= 5:
 	    writer.SetInput(linesPolyData)
 	else:
